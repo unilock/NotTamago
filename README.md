@@ -1,0 +1,3 @@
+# Tamago
+
+All Rights Reserved!?
