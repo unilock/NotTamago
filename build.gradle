@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.4-SNAPSHOT'
+	id 'fabric-loom' version '1.6-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -12,15 +12,14 @@ base {
 
 repositories {
 	maven { url = "https://maven.architectury.dev/" }
-	maven { url = "https://maven.jamieswhiteshirt.com/libs-release" }
-	maven { url = "https://mvn.devos.one/snapshots/" }
-	maven { url = "https://jitpack.io" }
+	maven { url = "https://maven.jamieswhiteshirt.com/libs-release/" }
+	maven { url = "https://mvn.devos.one/releases/" }
 }
 
 loom {
     mods {
 		"tamago" {
-			sourceSet sourceSets.main
+			sourceSet("main")
 		}
 	}
 }
@@ -32,7 +31,7 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "dev.architectury:architectury-fabric:${project.architectury_verion}"
-	modImplementation "io.github.fabricators_of_create.Porting-Lib:Porting-Lib:${project.porting_lib_version}"
+	modImplementation "io.github.fabricators_of_create.Porting-Lib:base:${project.porting_lib_version}"
 }
 
 processResources {
@@ -57,14 +56,14 @@ java {
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}"}
+		rename { "${it}_${project.base.archivesName.get()}" }
 	}
 }
 
 // Configure the maven publication
 publishing {
 	publications {
-		mavenJava(MavenPublication) {
+		create("mavenJava", MavenPublication) {
 			from components.java
 		}
 	}

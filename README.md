@@ -1,3 +1,3 @@
 # Tamago
 
-All Rights Reserved!?
+NULL

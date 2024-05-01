@@ -3,9 +3,10 @@
 	"id": "tamago",
 	"version": "${version}",
 	"name": "Tamago",
-	"description": "All Rights Reserved!?",
+	"description": "NULL",
 	"authors": [
-    "alphamode"
+		"alphamode",
+		"unilock"
 	],
 	"contact": {
 		"sources": "https://github.com/unilock/Tamago"
@@ -13,12 +14,12 @@
 	"license": "MIT",
 	"environment": "*",
 	"mixins": [
-    "tamago.mixins.json"
+		"tamago.mixins.json"
 	],
 	"depends": {
 		"fabricloader": "*",
 		"minecraft": ">=1.20.1",
-    "architectury": "*",
+		"architectury": "*",
 		"porting_lib": "*"
 	}
 }
