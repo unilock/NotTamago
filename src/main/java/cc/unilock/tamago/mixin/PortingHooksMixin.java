@@ -16,9 +16,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = PortingHooks.class, remap = false)
+@Mixin(PortingHooks.class)
 public class PortingHooksMixin {
-	@Inject(method = "onBlockBreakEvent(Lnet/minecraft/world/World;Lnet/minecraft/world/GameMode;Lnet/minecraft/server/network/ServerPlayerEntity;Lnet/minecraft/util/math/BlockPos;Z)I", at = @At(value = "INVOKE", target = "Lio/github/fabricators_of_create/porting_lib/event/common/BlockEvents$BreakEvent;isCanceled()Z", ordinal = 0))
+	@Inject(method = "onBlockBreakEvent(Lnet/minecraft/world/World;Lnet/minecraft/world/GameMode;Lnet/minecraft/server/network/ServerPlayerEntity;Lnet/minecraft/util/math/BlockPos;Z)I", at = @At(value = "INVOKE", target = "Lio/github/fabricators_of_create/porting_lib/event/common/BlockEvents$BreakEvent;isCanceled()Z", ordinal = 0, remap = false))
 	private static void onBlockBreakEventPre(World world, GameMode gameType, ServerPlayerEntity entityPlayer, BlockPos pos, boolean canAttackBlock, CallbackInfoReturnable<Integer> cir, @Local BlockState state, @Local BlockEvents.BreakEvent event) {
 		boolean result = PlayerBlockBreakEvents.BEFORE.invoker().beforeBlockBreak(world, entityPlayer, pos, state, null);
 
